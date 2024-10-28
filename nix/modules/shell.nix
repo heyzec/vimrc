@@ -23,29 +23,36 @@
       bat
       bat-extras.batman
 
+        tmux
+        (
+          if stdenv.isLinux
+          then ctpv
+          else null
+        ) # file previewer for lf, with image support
+        lf # terminal file manager
 
-      tmux
-      (if stdenv.isLinux then ctpv else null) # file previewer for lf, with image support
-      lf # terminal file manager
+        git
+        wget
+        zip
+        unzip
 
-      git
-      wget
-      zip
-      unzip
+        xxd
+        jq
+        file
+        pstree
 
-      xxd
-      jq
-      file
-      pstree
+        diffr
+        lazygit
 
-      diffr
-      lazygit
-
-      ##### Network Diagnostics #####
-      nmap # port scanner
-      dig  # check DNS entries
-      (if stdenv.isLinux then traceroute else null) # track route taken by packets
-    ];
+        ##### Network Diagnostics #####
+        nmap # port scanner
+        dig # check DNS entries
+        (
+          if stdenv.isLinux
+          then traceroute
+          else null
+        ) # track route taken by packets
+      ];
 
     commonConfig = lib.mkIf cfg.enable {
       programs.direnv.enable = true;
