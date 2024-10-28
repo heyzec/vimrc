@@ -34,6 +34,7 @@
       unzip
 
       xxd
+      jq
       file
       pstree
 
