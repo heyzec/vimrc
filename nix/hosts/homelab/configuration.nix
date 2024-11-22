@@ -14,7 +14,6 @@
   ];
 
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
   hardware.raspberry-pi."4".bluetooth.enable = true;
 }
 

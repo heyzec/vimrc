@@ -1,17 +1,23 @@
-{ stdenv, pkgs, fetchFromGitHub, buildHomeAssistantComponent, pyelectroluxconnect }:
+{ stdenv, pkgs, fetchFromGitHub, buildHomeAssistantComponent }:
 
 buildHomeAssistantComponent rec {
-
-  owner = "mauro-modolo";
-  domain = "samsungtv-tizen";
-  version = "1.6.1";
+  owner = "ollo69";
+  domain = "samsungtv_smart";
+  version = "0.13.4";
 
   src = fetchFromGitHub {
-    owner = "jaruba";
-    repo = "ha-samsungtv-tizen";
+    owner = "ollo69";
+    repo = "ha-samsungtv-smart";
     rev = "v${version}";
-    sha256 = "sha256-85p4eG0ePW2EI6vzksSbWLhNfkdrzCiu1KChuPwSobU=";
+    sha256 = "sha256-z6mIWuMQgFqo6WgnMCty1ur/iSxGTXok8snwUtRDkU8=";
   };
 
+  propagatedBuildInputs = with pkgs.python312Packages; [
+    numpy
+    websocket-client
+    wakeonlan
+    aiofiles
+    casttube
+  ];
 }
 

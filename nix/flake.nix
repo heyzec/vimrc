@@ -161,7 +161,7 @@
         ];
       };
 
-      "homelab" = inputs.nixpkgs-stable.lib.nixosSystem {
+      "homelab" = inputs.nixpkgs.lib.nixosSystem {
         system = (getSpecialArgs "homelab").systemSettings.system;
         modules = [
           ./modules
